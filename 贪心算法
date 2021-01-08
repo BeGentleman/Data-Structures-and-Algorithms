@@ -9,6 +9,41 @@
      # TODO
      
 0x03 贪心算法举例：
-     种花问题，背包问题等。
+     种花问题，背包问题，硬币问题等。
      # TODO：具体分析和实现
 
+     举例一：硬币问题
+     有1,5,10,25,100元五种面额的硬币，求用最少数量硬币组成36元的方案。
+     用贪心法解决思路：目的在于硬币数量最少，所以先采用数值最接近36的硬币，然后再采用最接近剩余金额的硬币，直到凑够总价值为36元。
+     
+     python实现思路：
+     step1:将所有存在的硬币面额都放进一个列表；
+     step2:依次比较组成目标金额需要的每一个硬币各自需要的个数，将个数为0的除去，剩下的个数从最小的开始计算；
+     step3:将个数最小的硬币面值和个数相乘以后，和目标金额相减，差的金额重复step1,step2,，直到金额达到目标金额为止；
+     step4:输出个数最凶啊的方案。
+     
+     python代码：
+     def mincount(money):
+       coin_value = [1,5,10,25,100]
+       out = []
+       coin_value = coin_value[::-1]
+
+       for i in coin_value:
+         count = money//i
+         out=out+[i,]*count
+         money = money-count*i
+         if money<=0:
+           break
+       return out
+     money = 36
+     print(mincount(money))
+     
+     输出：
+     ===================== RESTART: C:/Users/y/Desktop/ceshi.py =====================
+     [25, 10, 1]
+     >>> 
+     
+     举例二：种花问题
+     # TODO
+     
+     
