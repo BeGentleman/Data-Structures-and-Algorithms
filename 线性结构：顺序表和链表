@@ -139,3 +139,72 @@
      
      >>>
      '''
+         # 头部增加节点
+         # 为了不丢失头部的指针，需要先将新增节点的next指针域指向当前单链表的头节点（无论有没有头节点），
+         # 然后将当前单链表的头节点指向新增节点
+         def add(self):
+             node = SingleNode(10)
+             if self.head is None:
+                 self.head = node
+                 return
+
+             node.next = self.head
+             self.head = node
+
+     '''
+     a.add()
+     a.add()
+     a.add()
+     a.add()
+     a.travel()
+     
+     >>> 
+     10
+     10
+     10
+     10
+     '''
+     
+         # 在尾部增加节点
+         # 当节点的next指针指向None的时候，先不指向None，而是指向新添加的节点
+         def append(self, item):
+             node = SingleNode(item)
+
+             # 当是空链表的时候，尾部增加的节点也是头节点
+             if self.is_empty():
+                 self.head = node
+                 return
+
+             # 如果单链表不为空，当节点的next指针指向None的时候，先不指向None，而是指向新添加的节点
+             else:
+                 cur = self.head
+                 while cur.next is not None:
+                     cur = cur.next
+
+                 cur.next = node
+     '''
+     a = SingleLinkList()
+     # a.is_empty()
+     # a.get_length()
+     # a.travel()
+     a.add()
+     a.add()
+     a.add()
+     a.add()
+     a.travel()
+
+     a.append(500)
+     a.travel()
+     
+     >>>
+     10
+     10
+     10
+     10
+     False
+     10
+     10
+     10
+     10
+     500
+     '''
