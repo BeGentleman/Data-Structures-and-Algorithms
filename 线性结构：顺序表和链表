@@ -208,3 +208,28 @@
      10
      500
      '''
+     
+         # 指定位置增加节点
+         # 先找到需要插入位置的前一个节点，然后插入目标节点
+         def insert(self, pos, item):
+             if pos <= 0:
+                 self.add(item)
+                 return
+             if pos > self.get_length():
+                 self.append(item)
+                 return
+             else:
+                 cur = self.head
+                 count = 0
+                 node = SingleNode(item)
+                 
+                 # 找到目标位置的前一个节点cur
+                 while count < pos-1:
+                     cur = cur.next
+                     count += 1
+
+                 # 先将cur的指针域和新增节点的指针域都指向 下一个节点
+                 node.next = cur.next
+                 # 然后将cur的指针域指向新增节点
+                 cur.next = node
+
