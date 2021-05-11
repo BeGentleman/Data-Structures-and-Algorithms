@@ -236,24 +236,27 @@
          # 删除元素
          # 删除元素的思想在于，将想要删除对象的前一个对象的指针直接指向删除对象的下一个指针。
          def remove(self, item):
+             # 游标指向头节点
              cur = self.head
+             # 辅助游标
              pre = None
 
-             while cur.next is not None:
-                 # 如果要删除的元素不等于当前指向的元素内容，
-                 # 就继续往下走，直到相同为止
-                 # 操作是将pre和cur分别向后移动一位
-                 if item != cur.item:
+             while cur is not None:
+                 # 找到了要删除的元素：
+                 if cur.item == item:
+                     # 要删除的元素在头部
+                     if cur == self.head:
+                         self.head = cur.next
+                     # 不是头部找到要删除的元素
+                     else:
+                         pre.next = cur.next
+                     return
+                 # 没找到要删除的元素：
+                 else:
                      pre = cur
                      cur = cur.next
-                 # 找到了要删除的元素，就将删除元素的上一个元素指针域直接指向被删除元素下一个元素指针域
-                 else:
-                     pre.next = cur.next
-                     return
+             print(f"没有{item}")
 
-             # 链表中并没有要删除的节点，
-             # 就报一个错误
-             print(f"没有{item}这个元素")
 
      '''
      a = SingleLinkList()
@@ -283,7 +286,8 @@
      10
      500
      '''
-     
+         
+         # TODO:有错误，不应该用cur.next
          # 搜索元素是否存在
          # 搜索元素的思路在于遍历单链表，如果存在就返回True，不存在就返回False
          def search(self, item):
