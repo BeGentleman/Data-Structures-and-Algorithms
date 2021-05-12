@@ -287,7 +287,6 @@
      500
      '''
          
-         # TODO:有错误，不应该用cur.next
          # 搜索元素是否存在
          # 搜索元素的思路在于遍历单链表，如果存在就返回True，不存在就返回False
          def search(self, item):
@@ -299,6 +298,13 @@
                  else:
                      print(f"找到了{item}")
                      return True
+             else:
+                 if item != cur.item:
+                     cur = None
+                 else:
+                     print(f"找到了{item}")
+                     return True
+
              print(f"没有找到{item}")
              return False
 
