@@ -11,6 +11,17 @@
      哈希表可以看成是 数组+链表
      KEYS          VALUES
      数组array     链表
+     
+     哈希表在python中有内置函数,举个例子：
+     # 列表中元素为键，出现个数为值
+     import collections
+     a = [1,2,3,3,3,4]
+     b = collections.Counter(a)
+     
+     就会创建一个哈希表
+     >>> print(b)
+     Counter({3: 3, 1: 1, 2: 1, 4: 1})
+
 
 0x04 什么是哈希函数
      # TODO
